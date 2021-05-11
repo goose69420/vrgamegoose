@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 779861618}
   - component: {fileID: 779861617}
   - component: {fileID: 779861621}
+  - component: {fileID: 779861622}
   m_Layer: 0
   m_Name: teleport
   m_TagString: Untagged
@@ -919,7 +920,18 @@ MonoBehaviour:
   attached: 0
   onPickUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 61d07615785e5d3479a153855133e3c2, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDetachFromHand:
     m_PersistentCalls:
       m_Calls: []
@@ -1020,6 +1032,18 @@ MonoBehaviour:
   landedAt: 0
   fire1: {fileID: 1195180664}
   fire2: {fileID: 1259139961}
+--- !u!114 &779861622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779861611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d07615785e5d3479a153855133e3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &815187025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 168724, guid: dc06161b6d97feb419f45f03b62e14b9,
