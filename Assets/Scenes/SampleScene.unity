@@ -165,7 +165,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 28190727}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -321,7 +321,18 @@ MonoBehaviour:
   attached: 0
   onPickUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 342589563}
+        m_MethodName: onAttach
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 890685299}
+          m_ObjectArgumentAssemblyTypeName: Valve.VR.InteractionSystem.Hand, SteamVR
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDetachFromHand:
     m_PersistentCalls:
       m_Calls: []
@@ -329,13 +340,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
-  gun: 1
-  fullAuto: 0
-  bulletSpawnPosition: {fileID: 1027362905}
-  bulletPrefab: {fileID: 5918127812053544666, guid: f3888937b29935649be5d73d2085c782,
-    type: 3}
-  ShootCoolDown: 500
-  MagazineBullets: 4257
 --- !u!54 &342589556
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -448,9 +452,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 342589553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb46c9fd53169a408e93f06451b5c7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 61d07615785e5d3479a153855133e3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attached: 0
+  attachedlast: 0
+  gun: 1
+  fullAuto: 1
+  bulletSpawnPosition: {fileID: 1027362905}
+  bulletPrefab: {fileID: 5918127812053544666, guid: f3888937b29935649be5d73d2085c782,
+    type: 3}
+  ShootCoolDown: 0
+  MagazineBullets: 0
 --- !u!1 &375083840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 110716, guid: dc06161b6d97feb419f45f03b62e14b9,
@@ -742,7 +755,6 @@ GameObject:
   - component: {fileID: 779861618}
   - component: {fileID: 779861617}
   - component: {fileID: 779861621}
-  - component: {fileID: 779861622}
   m_Layer: 0
   m_Name: teleport
   m_TagString: Untagged
@@ -771,7 +783,7 @@ ReflectionProbe:
   m_FarClip: 1000
   m_ShadowDistance: 100
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -920,18 +932,7 @@ MonoBehaviour:
   attached: 0
   onPickUp:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 61d07615785e5d3479a153855133e3c2, type: 3}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDetachFromHand:
     m_PersistentCalls:
       m_Calls: []
@@ -939,12 +940,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
-  gun: 0
-  fullAuto: 0
-  bulletSpawnPosition: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  ShootCoolDown: 0
-  MagazineBullets: 0
 --- !u!54 &779861619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1032,18 +1027,6 @@ MonoBehaviour:
   landedAt: 0
   fire1: {fileID: 1195180664}
   fire2: {fileID: 1259139961}
---- !u!114 &779861622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779861611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d07615785e5d3479a153855133e3c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &815187025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 168724, guid: dc06161b6d97feb419f45f03b62e14b9,
@@ -1183,26 +1166,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 110716, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 125964, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 125964, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 168724, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 168724, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_TagString
-      value: MainCamera
-      objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1239,12 +1202,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_RenderingPath
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+--- !u!114 &890685299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11450312, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 859932794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e3e4511966ba94d8ba0b98c6c62f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1027362904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,12 +1337,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 487349ce43e8a9949b906b3fea4783b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.752018
+      value: 4.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487349ce43e8a9949b906b3fea4783b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.047603
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487349ce43e8a9949b906b3fea4783b3,
         type: 3}
@@ -1835,12 +1806,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
-  gun: 0
-  fullAuto: 0
-  bulletSpawnPosition: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  ShootCoolDown: 0
-  MagazineBullets: 0
 --- !u!54 &1658931293
 Rigidbody:
   m_ObjectHideFlags: 0

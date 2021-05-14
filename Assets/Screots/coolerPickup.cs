@@ -6,7 +6,13 @@ using Valve.VR;
 
 public class coolerPickup : MonoBehaviour
 {
+    //public Hand leftHand;
+    //public Hand rightHand;
+
+    Throwable throwable;
+
     public bool attached;
+    public bool attachedlast;
 
     public bool gun;
     public bool fullAuto;
@@ -23,16 +29,21 @@ public class coolerPickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        throwable = GetComponent<Throwable>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        attached = throwable.attached;
+
+        
+
         if (attached)
         {
-            bool checkHand = attachedHand.grabPinchAction.GetStateDown(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand) || Input.GetKeyDown(KeyCode.Mouse1);
-            bool checkHandAuto = attachedHand.grabPinchAction.GetState(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand) || Input.GetKey(KeyCode.Mouse1);
+            bool checkHand = /*(attachedHand != null && attachedHand.grabPinchAction.GetStateDown(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) ||*/ Input.GetKeyDown(KeyCode.Mouse1);
+            bool checkHandAuto = /*(attachedHand != null && attachedHand.grabPinchAction.GetState(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) ||*/ Input.GetKey(KeyCode.Mouse1);
+            
             if ((fullAuto && checkHandAuto) || (!fullAuto && checkHand))
             {
                 timenow = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
@@ -48,14 +59,11 @@ public class coolerPickup : MonoBehaviour
                 bullet.GetComponent<BulletController>().parent = gameObject;
             }
         }
+        attachedlast = attached;
     }
 
-    public void onAttach(Hand hand)
-    {
-
-    }
-    public void onDetach()
-    {
-
-    }
+    //void checkHand()
+    //{
+    //    if(leftHand.AttachedObjects.fi )
+    //}
 }

@@ -94,7 +94,7 @@ public class teleport : MonoBehaviour
             rb.useGravity = false;
             rb.isKinematic = !false;
 
-            Debug.Log(picked);
+
 
             if (!picked)
             {
