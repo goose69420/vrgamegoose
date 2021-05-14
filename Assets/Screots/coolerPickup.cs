@@ -6,8 +6,8 @@ using Valve.VR;
 
 public class coolerPickup : MonoBehaviour
 {
-    //public Hand leftHand;
-    //public Hand rightHand;
+    public Hand leftHand;
+    public Hand rightHand;
 
     Throwable throwable;
 
@@ -41,8 +41,8 @@ public class coolerPickup : MonoBehaviour
 
         if (attached)
         {
-            bool checkHand = /*(attachedHand != null && attachedHand.grabPinchAction.GetStateDown(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) ||*/ Input.GetKeyDown(KeyCode.Mouse1);
-            bool checkHandAuto = /*(attachedHand != null && attachedHand.grabPinchAction.GetState(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) ||*/ Input.GetKey(KeyCode.Mouse1);
+            bool checkHand = (attachedHand != null && attachedHand.grabPinchAction.GetStateDown(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) || Input.GetKeyDown(KeyCode.Mouse1);
+            bool checkHandAuto = (attachedHand != null && attachedHand.grabPinchAction.GetState(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) || Input.GetKey(KeyCode.Mouse1);
             
             if ((fullAuto && checkHandAuto) || (!fullAuto && checkHand))
             {
@@ -62,8 +62,9 @@ public class coolerPickup : MonoBehaviour
         attachedlast = attached;
     }
 
-    //void checkHand()
-    //{
-    //    if(leftHand.AttachedObjects.fi )
-    //}
+    void checkHand()
+    {
+        if (leftHand.currentAttachedObject == gameObject) attachedHand = leftHand;
+        if (rightHand.currentAttachedObject == gameObject) attachedHand = rightHand;
+    }
 }
