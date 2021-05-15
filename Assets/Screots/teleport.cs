@@ -27,6 +27,7 @@ public class teleport : MonoBehaviour
     public GameObject fire1;
     public GameObject fire2;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +56,7 @@ public class teleport : MonoBehaviour
         
         if (hit.collider != null && hit.collider.gameObject.CompareTag("teleportable"))
         {
-            if (needToTeleport && !picked)
+            if (needToTeleport && !picked )
             {
                 Player.transform.position = gameObject.transform.position - new Vector3(0, 0.5f, 0);
                 rb.velocity = Vector3.zero;
