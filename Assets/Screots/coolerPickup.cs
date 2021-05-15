@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 using Valve.VR;
-
+using UnityEngine.UI;
+using TMPro;
 public class coolerPickup : MonoBehaviour
 {
     public Hand leftHand;
     public Hand rightHand;
+    public Hand NotVRHand;
+
+    Transform Canvas;
+    TextMeshProUGUI ammo1;
+    TextMeshProUGUI ammo2;
 
     Throwable throwable;
 
     public bool attached;
     public bool attachedlast;
 
-    public bool gun;
     public bool fullAuto;
     Hand attachedHand;
     public Transform bulletSpawnPosition;
@@ -26,9 +31,14 @@ public class coolerPickup : MonoBehaviour
     long timenow;
     long lastShot;
 
+    public float rotationSpeed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
+        Canvas = FindObjectOfType<Canvas>().transform;
+        ammo1 = Canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
+        ammo2 = Canvas.GetChild(1).GetComponent<TextMeshProUGUI>();
         throwable = GetComponent<Throwable>();
     }
 
@@ -36,7 +46,8 @@ public class coolerPickup : MonoBehaviour
     void Update()
     {
         attached = throwable.attached;
-
+        checkHand();
+        
         
 
         if (attached)
@@ -60,11 +71,70 @@ public class coolerPickup : MonoBehaviour
             }
         }
         attachedlast = attached;
+
+
+
+
+        if(leftHand.currentAttachedObject == null)
+        {
+            ammo2.gameObject.SetActive(false);
+        } else
+        {
+            ammo2.gameObject.SetActive(true);
+        }
+        if (rightHand.currentAttachedObject == null && NotVRHand.currentAttachedObject == null)
+        {
+            ammo1.gameObject.SetActive(false);
+        }
+        else
+        {
+            ammo1.gameObject.SetActive(true);
+        }
+
+        if (attachedHand == leftHand)
+        {
+            ammo2.text = "AmmoL: " + MagazineBullets;
+        } else
+        {
+            ammo1.text = "AmmoR: " + MagazineBullets;
+        }
+
+        //if(attached)
+        //{
+        //    if (Input.GetKey(KeyCode.K))
+        //    {
+        //        transform.rotation *= Quaternion.Euler(new Vector3(0, 0, rotationSpeed));
+        //    }
+        //    if (Input.GetKey(KeyCode.H))
+        //    {
+        //        transform.rotation *= Quaternion.Euler(new Vector3(0, 0, -rotationSpeed));
+        //    }
+        //    if (Input.GetKey(KeyCode.U))
+        //    {
+        //        transform.rotation *= Quaternion.Euler(new Vector3(rotationSpeed, 0, 0));
+        //    }
+        //    if (Input.GetKey(KeyCode.J))
+        //    {
+        //        transform.rotation *= Quaternion.Euler(new Vector3(-rotationSpeed, 0, 0));
+        //    }
+        //}
+        
+
     }
 
     void checkHand()
     {
-        if (leftHand.currentAttachedObject == gameObject) attachedHand = leftHand;
-        if (rightHand.currentAttachedObject == gameObject) attachedHand = rightHand;
+        if (leftHand.currentAttachedObject == gameObject) 
+        { 
+            attachedHand = leftHand;
+            return;
+        }
+
+        if (rightHand.currentAttachedObject == gameObject) 
+        { 
+            attachedHand = rightHand;
+            return;
+        }
+        
     }
 }

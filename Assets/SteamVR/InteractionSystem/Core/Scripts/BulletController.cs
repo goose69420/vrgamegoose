@@ -36,7 +36,7 @@ namespace Valve.VR.InteractionSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.name);
+
             if ((parent != null && other.gameObject == parent)) return;
             if (other.CompareTag("Bullet")) return;
 
