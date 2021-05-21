@@ -455,6 +455,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   restoreOriginalParent: 0
   attached: 0
+  attachRotation: {x: 0, y: 0, z: 0, w: 0}
   onPickUp:
     m_PersistentCalls:
       m_Calls:
@@ -492,7 +493,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &342589557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,6 +1323,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   restoreOriginalParent: 0
   attached: 0
+  attachRotation: {x: 0, y: 0, z: 0, w: 0}
   onPickUp:
     m_PersistentCalls:
       m_Calls: []
@@ -1902,6 +1904,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7138911719419634587, guid: f78dd289e2b15074b932bc18c0d91e07,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7138911719419634588, guid: f78dd289e2b15074b932bc18c0d91e07,
         type: 3}
       propertyPath: lengthInSec
@@ -1910,6 +1917,11 @@ PrefabInstance:
     - target: {fileID: 7138911719419634588, guid: f78dd289e2b15074b932bc18c0d91e07,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138911719793951936, guid: f78dd289e2b15074b932bc18c0d91e07,
+        type: 3}
+      propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7138911719793951937, guid: f78dd289e2b15074b932bc18c0d91e07,
@@ -1985,12 +1997,12 @@ PrefabInstance:
     - target: {fileID: 7138911719793951999, guid: f78dd289e2b15074b932bc18c0d91e07,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7138911719793951999, guid: f78dd289e2b15074b932bc18c0d91e07,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78dd289e2b15074b932bc18c0d91e07, type: 3}
@@ -2251,6 +2263,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   restoreOriginalParent: 0
   attached: 0
+  attachRotation: {x: 0, y: 0, z: 0, w: 0}
   onPickUp:
     m_PersistentCalls:
       m_Calls: []

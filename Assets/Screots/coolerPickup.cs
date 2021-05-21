@@ -47,14 +47,14 @@ public class coolerPickup : MonoBehaviour
     {
         attached = throwable.attached;
         checkHand();
-        
-        
+
+
 
         if (attached)
         {
             bool checkHand = (attachedHand != null && attachedHand.grabPinchAction.GetStateDown(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) || Input.GetKeyDown(KeyCode.Mouse1);
             bool checkHandAuto = (attachedHand != null && attachedHand.grabPinchAction.GetState(SteamVR_Input_Sources.LeftHand | SteamVR_Input_Sources.RightHand)) || Input.GetKey(KeyCode.Mouse1);
-            
+
             if ((fullAuto && checkHandAuto) || (!fullAuto && checkHand))
             {
                 timenow = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
@@ -74,67 +74,48 @@ public class coolerPickup : MonoBehaviour
 
 
 
+        if (attached)
+        {
 
-        if(leftHand.currentAttachedObject == null)
+            if (attachedHand == leftHand)
+            {
+                ammo2.gameObject.SetActive(true);
+                ammo2.text = "AmmoL: " + MagazineBullets;
+            }
+            else
+            {
+                ammo1.gameObject.SetActive(true);
+                ammo1.text = "AmmoR: " + MagazineBullets;
+            }
+        }
+        if (leftHand.currentAttachedObject == null)
         {
             ammo2.gameObject.SetActive(false);
-        } else
-        {
-            ammo2.gameObject.SetActive(true);
         }
+
         if (rightHand.currentAttachedObject == null && NotVRHand.currentAttachedObject == null)
         {
             ammo1.gameObject.SetActive(false);
         }
-        else
-        {
-            ammo1.gameObject.SetActive(true);
-        }
 
-        if (attachedHand == leftHand)
-        {
-            ammo2.text = "AmmoL: " + MagazineBullets;
-        } else
-        {
-            ammo1.text = "AmmoR: " + MagazineBullets;
-        }
-
-        //if(attached)
-        //{
-        //    if (Input.GetKey(KeyCode.K))
-        //    {
-        //        transform.rotation *= Quaternion.Euler(new Vector3(0, 0, rotationSpeed));
-        //    }
-        //    if (Input.GetKey(KeyCode.H))
-        //    {
-        //        transform.rotation *= Quaternion.Euler(new Vector3(0, 0, -rotationSpeed));
-        //    }
-        //    if (Input.GetKey(KeyCode.U))
-        //    {
-        //        transform.rotation *= Quaternion.Euler(new Vector3(rotationSpeed, 0, 0));
-        //    }
-        //    if (Input.GetKey(KeyCode.J))
-        //    {
-        //        transform.rotation *= Quaternion.Euler(new Vector3(-rotationSpeed, 0, 0));
-        //    }
-        //}
         
+
 
     }
 
     void checkHand()
     {
-        if (leftHand.currentAttachedObject == gameObject) 
-        { 
+        if (leftHand.currentAttachedObject == gameObject)
+        {
             attachedHand = leftHand;
             return;
         }
 
-        if (rightHand.currentAttachedObject == gameObject) 
-        { 
+        if (rightHand.currentAttachedObject == gameObject)
+        {
             attachedHand = rightHand;
             return;
         }
-        
+
     }
 }

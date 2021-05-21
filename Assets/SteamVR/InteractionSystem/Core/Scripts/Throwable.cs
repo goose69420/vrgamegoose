@@ -46,7 +46,7 @@ namespace Valve.VR.InteractionSystem
         public bool attached = false;
         protected float attachTime;
         protected Vector3 attachPosition;
-        protected Quaternion attachRotation;
+        public Quaternion attachRotation;
         protected Transform attachEaseInTransform;
 
 		public UnityEvent onPickUp;

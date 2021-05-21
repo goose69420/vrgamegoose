@@ -56,8 +56,12 @@ public class teleport : MonoBehaviour
         
         if (hit.collider != null && hit.collider.gameObject.CompareTag("teleportable"))
         {
+            
             if (needToTeleport && !picked )
             {
+                transform.rotation = new Quaternion(0, 0, 0, 0);
+                transform.position -= new Vector3(0, transform.position.y - hit.point.y, 0);
+
                 Player.transform.position = gameObject.transform.position - new Vector3(0, 0.5f, 0);
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
